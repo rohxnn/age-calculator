@@ -30,8 +30,9 @@ export class AppComponent {
 
   onSubmit() {
     this.leapYearCheck(this.currentDate.getFullYear());
+    this.ageCalculation();
   }
-  
+
   leapYearCheck(year: number) {
     if (year % 4 === 0 || (year % 400 === 0 && year % 100 === 0)) {
       this.monthsDay[1] = 29;
@@ -39,6 +40,33 @@ export class AppComponent {
     } else {
       this.monthsDay[1] = 28;
       this.isLeapYear = false;
+    }
+  }
+
+  ageCalculation() {
+    // calculating days in the current year
+    let currentDaySum: number = 0;
+    const ageFormValue = this.ageForm.value;
+    for (let i = 0; i < this.currentDate.getMonth(); i++) {
+      currentDaySum += this.monthsDay[i];
+    }
+    const daysInCurrentYear = currentDaySum + this.currentDate.getDate();
+    // calculating total days from birth to now
+    let birthMonthDaysSum = 0;
+    for (let i = 0; i < ageFormValue.birth_month - 1; i++) {
+      birthMonthDaysSum += this.monthsDay[i];
+    }
+    const daysInBirthYear = birthMonthDaysSum + ageFormValue.birth_day;
+    // calculate the exact age from the birth date and today's date
+    if (daysInBirthYear < daysInCurrentYear) {
+      this.yearsOfAge = this.currentDate.getFullYear() - ageFormValue.birth_year;
+    } else {
+      this.yearsOfAge = (this.currentDate.getFullYear() - ageFormValue.birth_year) - 1;
+    }
+    if (daysInBirthYear === daysInCurrentYear) {
+      this.yearsOfAge = this.yearsOfAge = this.currentDate.getFullYear() - ageFormValue.birth_year;
+      this.noOfMonth = 0;
+      this.noOfDays = 0;
     }
   }
 
