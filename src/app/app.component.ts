@@ -27,6 +27,10 @@ export class AppComponent {
       birth_month: new FormControl()
     });
   }
+
+  onSubmit() {
+    this.leapYearCheck(this.currentDate.getFullYear());
+  }
   
   leapYearCheck(year: number) {
     if (year % 4 === 0 || (year % 400 === 0 && year % 100 === 0)) {
