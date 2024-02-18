@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'age-calculator';
   ageForm: FormGroup;
   currentDate: Date = new Date();
-  monthsDay: number[] = [31, 28, 31, 30, 31, 30, 31, 31, 31, 30, 31];
+  monthsDay: number[] = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   isLeapYear: boolean;
   yearsOfAge: number = null;
   noOfMonth: number = null;
@@ -75,7 +75,7 @@ export class AppComponent {
   countMonthAndDay(daysInBirthYear: number, daysInCurrentYear: number) {
     let countMonth: number = 0;
     let countDay: number = 0;
-    let sum: number = this.monthsDay[0];
+    let sum: number = 0;
     if (daysInBirthYear > daysInCurrentYear) {
       if (this.isLeapYear) {
         countDay = Math.abs((daysInBirthYear - 365)) + daysInCurrentYear;
@@ -85,16 +85,16 @@ export class AppComponent {
     } else {
       countDay = daysInCurrentYear - daysInBirthYear;
     }
-    for (let i = 1; i < this.monthsDay.length; i++) {
-      if (countDay >= sum) {
+    for (let i = 0; i < this.monthsDay.length; i++) {
+      if (countDay >= sum + this.monthsDay[i]) {
         sum += this.monthsDay[i];
         countMonth++;
       } else {
-        this.noOfDays = Math.abs(countDay - (sum - this.monthsDay[i - 1]));
+        this.noOfDays = Math.abs(countDay - sum);
         this.noOfMonth = countMonth;
         break;
       }
-    };
+    }
     console.log(this.yearsOfAge + 'years' + ' ' + this.noOfMonth + ' months' + ' ' + this.noOfDays + ' days');
   }
 }
