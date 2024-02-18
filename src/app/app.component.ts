@@ -68,7 +68,33 @@ export class AppComponent {
       this.noOfMonth = 0;
       this.noOfDays = 0;
     }
+    this.countMonthAndDay(daysInBirthYear, daysInCurrentYear);
   }
 
-
+  //counting month and the days of age
+  countMonthAndDay(daysInBirthYear: number, daysInCurrentYear: number) {
+    let countMonth: number = 0;
+    let countDay: number = 0;
+    let sum: number = this.monthsDay[0];
+    if (daysInBirthYear > daysInCurrentYear) {
+      if (this.isLeapYear) {
+        countDay = Math.abs((daysInBirthYear - 365)) + daysInCurrentYear;
+      } else {
+        countDay = Math.abs((daysInBirthYear - 366)) + daysInCurrentYear;
+      }
+    } else {
+      countDay = daysInCurrentYear - daysInBirthYear;
+    }
+    for (let i = 1; i < this.monthsDay.length; i++) {
+      if (countDay >= sum) {
+        sum += this.monthsDay[i];
+        countMonth++;
+      } else {
+        this.noOfDays = Math.abs(countDay - (sum - this.monthsDay[i - 1]));
+        this.noOfMonth = countMonth;
+        break;
+      }
+    };
+    console.log(this.yearsOfAge + 'years' + ' ' + this.noOfMonth + ' months' + ' ' + this.noOfDays + ' days');
+  }
 }
