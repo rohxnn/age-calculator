@@ -1,6 +1,24 @@
-<form [formGroup]="ageForm" (ngSubmit)="onSubmit()">
-  <input type="number" formControlName="birth_year">
-  <input type="number" formControlName="birth_month">
-  <input type="number" formControlName="birth_day">
-  <button type="submit">Submit</button>
-</form>
+<div class="container-fluid">
+  <header>
+    <h1 class="text-center text-white fw-bold">Age Calculator</h1>
+  </header>
+  <div class="content-body">
+    <form [formGroup]="ageForm" (ngSubmit)="onSubmit()">
+      <div class="row p-3">
+        <div class="col">
+          <label for="" class="fw-bold">Year</label>
+          <input type="number" class="form-control" formControlName="birth_year">
+        </div>
+        <div class="col">
+          <label for="" class="fw-bold">Month</label>
+          <input type="number" class="form-control" formControlName="birth_month">
+        </div>
+        <div class="col">
+          <label for="" class="fw-bold">Days</label>
+          <input type="number" class="form-control" formControlName="birth_day">
+        </div>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
