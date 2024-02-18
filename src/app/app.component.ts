@@ -27,4 +27,16 @@ export class AppComponent {
       birth_month: new FormControl()
     });
   }
+  
+  leapYearCheck(year: number) {
+    if (year % 4 === 0 || (year % 400 === 0 && year % 100 === 0)) {
+      this.monthsDay[1] = 29;
+      this.isLeapYear = true;
+    } else {
+      this.monthsDay[1] = 28;
+      this.isLeapYear = false;
+    }
+  }
+
+
 }
