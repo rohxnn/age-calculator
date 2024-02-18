@@ -85,16 +85,18 @@ export class AppComponent {
     } else {
       countDay = daysInCurrentYear - daysInBirthYear;
     }
-    for (let i = 0; i < this.monthsDay.length; i++) {
-      if (countDay >= sum + this.monthsDay[i]) {
-        sum += this.monthsDay[i];
+
+    this.monthsDay.forEach((num) => {
+      if(countDay >= sum + num) {
+        sum += num;
         countMonth++;
       } else {
-        this.noOfDays = Math.abs(countDay - sum);
-        this.noOfMonth = countMonth;
-        break;
+         this.noOfDays = Math.abs(countDay - sum);
+         this.noOfMonth = countMonth;
+         return;
       }
-    }
+    });
+    
     console.log(this.yearsOfAge + 'years' + ' ' + this.noOfMonth + ' months' + ' ' + this.noOfDays + ' days');
   }
 }
