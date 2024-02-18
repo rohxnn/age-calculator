@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,23 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'age-calculator';
+  ageForm: FormGroup;
+  currentDate: Date = new Date();
+  monthsDay: number[] = [31, 28, 31, 30, 31, 30, 31, 31, 31, 30, 31];
+  isLeapYear: boolean;
+  yearsOfAge: number = null;
+  noOfMonth: number = null;
+  noOfDays: number = null;
+
+  constructor() {
+    this.inintAgeForm()
+  }
+
+  inintAgeForm() {
+    this.ageForm = new FormGroup({
+      birth_year: new FormControl(),
+      birth_day: new FormControl(),
+      birth_month: new FormControl()
+    });
+  }
 }
