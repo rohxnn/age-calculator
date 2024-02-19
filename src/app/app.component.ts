@@ -68,31 +68,31 @@ export class AppComponent {
       this.noOfMonth = 0;
       this.noOfDays = 0;
     }
-    this.countMonthAndDay(totalDaysInBirthYear, daysInCurrentYear);
+    this.countMonthsAndDay(totalDaysInBirthYear, daysInCurrentYear);
   }
 
   //counting month and the days of age
-  countMonthAndDay(totalDaysInBirthYear: number, daysInCurrentYear: number) {
-    let countMonth: number = 0;
-    let countDay: number = 0;
+  countMonthsAndDay(totalDaysInBirthYear: number, daysInCurrentYear: number) {
+    let countMonths: number = 0;
+    let countDays: number = 0;
     let sum: number = 0;
     if (totalDaysInBirthYear > daysInCurrentYear) {
       if (this.isLeapYear) {
-        countDay = Math.abs((totalDaysInBirthYear - 365)) + daysInCurrentYear;
+        countDays = Math.abs((totalDaysInBirthYear - 365)) + daysInCurrentYear;
       } else {
-        countDay = Math.abs((totalDaysInBirthYear - 366)) + daysInCurrentYear;
+        countDays = Math.abs((totalDaysInBirthYear - 366)) + daysInCurrentYear;
       }
     } else {
-      countDay = daysInCurrentYear - totalDaysInBirthYear;
+      countDays = daysInCurrentYear - totalDaysInBirthYear;
     }
 
     this.daysInEachMonth.forEach((num) => {
-      if(countDay >= sum + num) {
+      if(countDays >= sum + num) {
         sum += num;
-        countMonth++;
+        countMonths++;
       } else {
-         this.noOfDays = Math.abs(countDay - sum);
-         this.noOfMonth = countMonth;
+         this.noOfDays = Math.abs(countDays - sum);
+         this.noOfMonth = countMonths;
          return;
       }
     });
