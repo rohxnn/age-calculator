@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-day-validity-checker',
-  templateUrl: './day-validity-checker.component.html',
-  styleUrls: ['./day-validity-checker.component.scss']
+  template: `<ng-container *ngIf="control.invalid && (control.touched || control.dirty)" >
+             <small *ngIf="control.errors?.required" class="mt-3 text-danger">{{key}} is required</small>
+             </ng-container>`
 })
 export class DayValidityCheckerComponent {
-
+@Input()
+control: any;
+@Input()
+key: any;
 }

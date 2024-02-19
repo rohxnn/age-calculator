@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -22,15 +22,20 @@ export class AppComponent {
 
   inintAgeForm() {
     this.ageForm = new FormGroup({
-      birth_year: new FormControl(),
-      birth_day: new FormControl(),
-      birth_month: new FormControl(1)
+      birth_year: new FormControl('',[ Validators.required ]),
+      birth_day: new FormControl('',[ Validators.required ]),
+      birth_month: new FormControl('1',[ Validators.required ])
     });
   }
 
   onSubmit() {
-    this.leapYearCheck(this.currentDate.getFullYear());
-    this.ageCalculation();
+    if(this.ageForm.valid) {
+      this.leapYearCheck(this.currentDate.getFullYear());
+      this.ageCalculation();
+    } else {
+      this.ageForm.markAllAsTouched();
+    }
+    
   }
 
   leapYearCheck(year: number) {

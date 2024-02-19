@@ -8,6 +8,7 @@
         <div class="col">
           <label for="" class="fw-bold">Day</label>
           <input type="number" class="form-control" formControlName="birth_day">
+          <app-day-validity-checker [control]="ageForm.get('birth_day')" [key]="'Day'"></app-day-validity-checker>
         </div>
         <div class="col">
           <label for="" class="fw-bold">Month</label>
