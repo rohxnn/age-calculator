@@ -5,15 +5,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 //component
 import { AppComponent } from './app.component';
-import { DayValidityCheckerComponent } from './shared/day-validity-checker/day-validity-checker.component';
-import { YearValidityCheckerComponent } from './shared/year-validity-checker/year-validity-checker.component';
+import { DateValidityComponent } from './shared/date-validity/date-validity.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DayValidityCheckerComponent,
-    YearValidityCheckerComponent
+    DateValidityComponent
   ],
   imports: [
     BrowserModule,
