@@ -1,16 +1,24 @@
 .container-fluid {
   background-color: rgb(50, 50, 142);
   min-height: 100vh;
-  padding-top: 15vh;
+  padding-top: 8vh;
 }
 .content-body {
-  height: 60vh;
+  height: 65vh;
   background-color: rgb(255, 255, 255);
-  width: 60%;
+  width: 50%;
   margin: auto;
   border-radius: 10px;
   border-bottom-right-radius: 40px;
 }
 .show-answer {
   width: 50%;
+}
+button {
+  border: none;
+  background-color: white;
+}
+.submit-button {
+  margin: 20px;
+  float: right;
 }
