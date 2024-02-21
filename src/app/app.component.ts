@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+//validator
+import { customValidator } from './shared/custom-validator.validators';
 
 @Component({
   selector: 'app-root',
@@ -22,10 +24,10 @@ export class AppComponent {
 
   inintAgeForm() {
     this.ageForm = new FormGroup({
-      birth_year: new FormControl('',[ Validators.required ]),
-      birth_day: new FormControl('',[ Validators.required ]),
+      birth_year: new FormControl('',[ Validators.required, Validators.min(0), Validators.max(this.currentDate.getFullYear()) ]),
+      birth_day: new FormControl('',[ Validators.required, Validators.min(0), Validators.max(31) ]),
       birth_month: new FormControl('1',[ Validators.required ])
-    });
+    }, { validators: customValidator });
   }
 
   onSubmit() {
@@ -34,8 +36,7 @@ export class AppComponent {
       this.ageCalculation();
     } else {
       this.ageForm.markAllAsTouched();
-    }
-    
+    } 
   }
 
   leapYearCheck(year: number) {
@@ -92,7 +93,7 @@ export class AppComponent {
     }
 
     this.daysInEachMonth.forEach((num) => {
-      if(countDays >= sum + num) {
+      if(countDays > sum + num) {
         sum += num;
         countMonths++;
       } else {
