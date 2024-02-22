@@ -26,7 +26,7 @@ export class AppComponent {
     this.ageForm = new FormGroup({
       birth_year: new FormControl('',[ Validators.required, Validators.min(0), Validators.max(this.currentDate.getFullYear()) ]),
       birth_day: new FormControl('',[ Validators.required, Validators.min(0), Validators.max(31) ]),
-      birth_month: new FormControl('1',[ Validators.required ])
+      birth_month: new FormControl('',[ Validators.required, Validators.min(1), Validators.max(12) ])
     }, { validators: customValidator });
   }
 
