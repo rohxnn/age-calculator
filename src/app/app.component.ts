@@ -14,9 +14,10 @@ export class AppComponent {
   currentDate: Date = new Date();
   daysInEachMonth: number[] = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   isLeapYear: boolean;
-  yearsOfAge: number = null;
-  noOfMonth: number = null;
-  noOfDays: number = null;
+  yearsOfAge: number | string = '--';
+  noOfMonth: number | string = '--';
+  noOfDays: number | string  = '--';
+  isValidDate: boolean;
 
   constructor() {
     this.inintAgeForm()
@@ -102,7 +103,5 @@ export class AppComponent {
          return;
       }
     });
-    
-    console.log(this.yearsOfAge + 'years' + ' ' + this.noOfMonth + ' months' + ' ' + this.noOfDays + ' days');
   }
 }
