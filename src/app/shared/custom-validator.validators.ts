@@ -14,7 +14,6 @@ export function customValidator(control: FormGroup) {
 
   //date validity check
   if (dayValue > daysInEachMonth[monthValue - 1]) {
-      control.get('birth_month').setErrors({ customError: true });
       control.get('birth_day').setErrors({ customError: true }); 
   }
   return null;
