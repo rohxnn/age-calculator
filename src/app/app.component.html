@@ -7,17 +7,17 @@
       <div class="row p-3">
         <div class="col">
           <label for="" class="fw-bold">Day</label>
-          <input type="number" class="form-control" formControlName="birth_day" id="day">
+          <input type="number" class="form-control mt-1" formControlName="birth_day" id="day">
           <app-date-validity [key]="'day'" [control]="ageForm.get('birth_day')"></app-date-validity>
         </div>
         <div class="col">
           <label for="" class="fw-bold">Month</label>
-          <input type="number" class="form-control" formControlName="birth_month">
+          <input type="number" class="form-control mt-1" formControlName="birth_month">
           <app-date-validity [key]="'month'" [control]="ageForm.get('birth_month')"></app-date-validity>
         </div>
         <div class="col">
           <label for="" class="fw-bold">Year</label>
-          <input type="number" class="form-control" formControlName="birth_year" id="year" >
+          <input type="number" class="form-control mt-1" formControlName="birth_year" id="year">
           <app-date-validity [key]="'year'" [control]="ageForm.get('birth_year')"></app-date-validity>
         </div>
       </div>
