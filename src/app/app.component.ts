@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { RouterOutlet } from '@angular/router';
 //validator
 import { customValidator } from './shared/custom-validator.validators';
+//component
+import { DateValidityComponent } from './shared/date-validity/date-validity.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  standalone: true ,
+  imports: [ AppComponent, ReactiveFormsModule , DateValidityComponent , RouterOutlet ] 
 })
 export class AppComponent {
   title = 'age-calculator';
